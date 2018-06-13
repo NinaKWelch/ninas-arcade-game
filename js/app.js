@@ -1,14 +1,14 @@
-// Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+// Enemy class
+var Enemy = function(x, y) {
+    // x and y coordinates for the enemy objects on the canvas
+    this.x = x;
+    this.y = y;
+    // randomised speed for each of the enemy objects
+    // The image/sprite for enemies (uses a helper to easily load images)
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+// Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
@@ -21,15 +21,30 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player class (requires an update(), render() and a handleInput() method.)
+var Player = function(x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png'; // The image/sprite for player
+    this.update = function() {
+      // code
+    }
+    this.render = function() {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+};
 
 
-// Now instantiate your objects.
+// Instantiate the objects
+var enemy1 = new Enemy(0, 60);
+var enemy2 = new Enemy(0, 143);
+var enemy3 = new Enemy(0, 226);
+
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+var allEnemies = [enemy1, enemy2, enemy3];
 
+// Place the player object in a variable called player
+var player = new Player(200, 400);
 
 
 // This listens for key presses and sends the keys to your
