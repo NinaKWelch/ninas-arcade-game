@@ -158,6 +158,9 @@ var Engine = (function(global) {
         allGems.forEach(function(gem) {
             gem.render();
         });
+
+        renderScore();
+        renderLives();
     }
 
     /* This function does nothing but it could have been a good place to

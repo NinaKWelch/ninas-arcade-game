@@ -1,10 +1,6 @@
 // Variables
 var lives = 5;
-var tokens = 0;
-
-var showLives = document.querySelector('.lives');
-var showTokens = document.querySelector('.tokens');
-
+var score = 0;
 
 // Enemy constructor function
 var Enemy = function(x, y) {
@@ -113,7 +109,6 @@ function checkCollisions() {
 
             // reduce lives
             lives--;
-            showLives.textContent = lives;
 
             // end game if there are no more lives left
             if (!lives) {
@@ -135,20 +130,31 @@ function checkCollisions() {
         // check if the player picks up a gem
         if (gem.x === player.x && gem.y > (player.y - 50) && gem.y < (player.y + 50)) {
 
-            // Add tokens based on gem type
+            // Add score based on gem type
             if (gem.sprite === 'images/gem-green.png') {
-                tokens += 500;
+                score += 500;
             } else if (gem.sprite === 'images/gem-blue.png') {
-                tokens += 250;
+                score += 250;
             } else if (gem.sprite === 'images/gem-orange.png') {
-                tokens += 100;
+                score += 100;
             }
 
             // Show the new score and remove the gem form the canvas
-            showTokens.textContent = tokens;
             gem.x = undefined;
         };
     }
+}
+
+function renderScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: " + score, 8, 20);
+}
+
+function renderLives() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Lives: " + lives, 108, 20);
 }
 
 // reset the game board
@@ -166,6 +172,8 @@ function startOver() {
     enemy3.x = -100;
     enemy3.y = 226;
 }
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
