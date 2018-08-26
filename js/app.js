@@ -1,9 +1,17 @@
-// Variables
-var lives = 5;
-var score = 0;
+/**
+* Variables
+*/
+
+var lives = 5; // maximum lives for the game
+var score = 0; // score for collecting gems
+// popup windows
 const startGamePopup = document.getElementById('gameStartPopup');
 const endGamePopup = document.getElementById('gameEndPopup');
 const winGamePopup = document.getElementById('gameWinPopup');
+
+/**
+* Constructor functions
+*/
 
 // Enemy constructor function
 var Enemy = function(x, y) {
@@ -12,7 +20,7 @@ var Enemy = function(x, y) {
     this.y = y;
     // randomised speed for each of the enemy objects
     this.speed = Math.floor((Math.random() * 1000) + 1);
-    // The image/sprite for enemies (uses a helper to easily load images)
+    // the image/sprite for enemies (uses a helper to easily load images)
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -32,16 +40,20 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Player constructor function (requires an update(), render() and a handleInput() method.)
+// Player constructor function
 var Player = function(x, y) {
+    //x and y coordinates for the player
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-boy.png'; // The image/sprite for player
-    this.update = function() {
-    };
+    this.sprite = 'images/char-boy.png'; // default image for player
+    // update function (required)
+    this.update = function() {};
+    // render the player on canvas
     this.render = function() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
+    // move the player with arrow keys
+    // but only within the canvas
     this.handleInput = function(keyCode) {
         if (keyCode === 'left' && player.x > 100) {
             player.x -= 101;
@@ -57,37 +69,35 @@ var Player = function(x, y) {
 
 // Gem constructor function
 var Gem = function() {
-    // Select a random column
+    // select a random column
     this.x = Math.floor((Math.random() * 5) + 0) * 101;
 
-    // Select a random row below the water blocks
+    // select a random row below the water blocks
     this.y = Math.floor((Math.random() * 5) + 0) * 83 + 52;
 
-    // Move gems to the left if it is randomly placed over the player's starting position
+    // move gems to the left if they are randomly placed over the player's starting position
     if (this.x === 202 && this.y === 384) {
         this.x = 101;
     };
 
-    this.sprite = 'images/gem-green.png'; // Default image for gems
+    this.sprite = 'images/gem-green.png'; // default image for gems
 
-    // Render method to draw the gems on the canvas
+    // render the gems on the canvas
     this.render = function() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 };
 
-// Instantiate the objects
+/**
+* Objects and properties
+*/
 
 // Enemies
 var enemy1 = new Enemy(-100, 60);
 var enemy2 = new Enemy(-100, 143);
 var enemy3 = new Enemy(-100, 226);
 
-
-// Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1, enemy2, enemy3];
-
-// Place the player object in a variable called player
+// Player
 var player = new Player(202, 392);
 
 // Gems
@@ -98,13 +108,24 @@ var orangeGem = new Gem();
 blueGem.sprite = 'images/gem-blue.png';
 orangeGem.sprite = 'images/gem-orange.png';
 
+/**
+* Arrays
+*/
+
+// Enemies array
+var allEnemies = [enemy1, enemy2, enemy3];
+
 // Gems array
 var allGems = [greenGem, blueGem, orangeGem];
 
+/**
+* Functions
+*/
 
-// Check if the player and an enemy collide or if palyer has collected a gem
+// Check if the player and an enemy collide
+// Check if player has collected a gem
 function checkCollisions() {
-    // Loop enemies array
+    // loop the enemies array
     for (var i = 0; i < allEnemies.length; i++) {
         var enemy = allEnemies[i];
 
@@ -118,18 +139,19 @@ function checkCollisions() {
             if (lives === 0) {
                 endGame();
             } else {
-                // reset the game
+                // reset the game by placing the player back into the starting position
                 startOver();
             }
         } else if (player.y < 0) {
-            // end game if the player reaches the top without colliding
+            // end game if the player reaches the top without colliding with enemies
             setTimeout(function() {
-                //alert('You won!'); // sets a short delay so that player can reach the top tile
+                // set a short delay so that player can reach the top tile
                 winGame();
             }, 200);
         }
     }
-    // Loop gems array
+
+    // loop the gems array
     for (var i = 0; i < allGems.length; i++) {
         var gem = allGems[i];
         // check if the player picks up a gem
@@ -150,12 +172,14 @@ function checkCollisions() {
     }
 }
 
+// show the score
 function renderScore() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
         ctx.fillText("Score: " + score, 8, 20);
 }
 
+// show lives
 function renderLives() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
@@ -165,7 +189,7 @@ function renderLives() {
         }
 }
 
-// reset the game board
+// reset the game board when player collides with an enemy
 function startOver() {
 
     //reset position for player
@@ -181,24 +205,28 @@ function startOver() {
     enemy3.y = 226;
 }
 
+// How to play popup (show at the start)
 function startGame() {
     setTimeout(function() {
         startGamePopup.style.display = 'none';
-    }, 4000);
+    }, 3500);
 }
 
+// End the game popup (when player looses)
 function endGame() {
     stopGame();
     // Show 'No lives' popup
     endGamePopup.style.display = 'initial';
 }
 
+// End the game popup (when player wins)
 function winGame() {
     stopGame();
     // Show 'You won' popup
     winGamePopup.style.display = 'initial';
 }
 
+// When game ends, stop enemies and player from moving
 function stopGame() {
     // stop enemies from moving
     enemy1.speed = null;
@@ -207,6 +235,10 @@ function stopGame() {
     player.handleInput = function() {
     }
 }
+
+/**
+* Event listeners
+*/
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -221,7 +253,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-
+// Show instructions for the game when the page loads
 window.addEventListener("load", function(e) {
     startGame();
 });
