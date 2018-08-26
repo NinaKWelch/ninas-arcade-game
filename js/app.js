@@ -138,7 +138,8 @@ function checkCollisions() {
             lives--;
 
             // end game if there are no more lives left
-            if (lives === 0) {
+            if (lives <= 0) {
+                lives = 0;
                 endGame();
             } else {
                 // reset the game by placing the player back into the starting position
@@ -186,9 +187,6 @@ function renderLives() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
         ctx.fillText("Lives: " + lives, 108, 20);
-        if (lives < 0) {
-            lives = 0
-        }
 }
 
 // reset the game board when player collides with an enemy
