@@ -4,6 +4,7 @@
 
 var lives = 5; // maximum lives for the game
 var score = 0; // score for collecting gems
+
 // popup windows
 const startGamePopup = document.getElementById('gameStartPopup');
 const endGamePopup = document.getElementById('gameEndPopup');
@@ -29,20 +30,20 @@ Enemy.prototype.update = function(dt) {
     // multiply any movement by the dt parameter (a time delta between ticks)
     // (ensures the game runs at the same speed for all computers)
     this.x += this.speed * dt;
-    // keep enemy moving across the canvas
+    // keep enemies moving across the canvas repeatedly
     if (this.x > 505) {
         this.x = -100;
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen (required method for game)
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Player constructor function
 var Player = function(x, y) {
-    //x and y coordinates for the player
+    // x and y coordinates for the player object on the canvas
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png'; // default image for player
@@ -105,6 +106,7 @@ var greenGem = new Gem();
 var blueGem = new Gem();
 var orangeGem = new Gem();
 
+// Gem colors
 blueGem.sprite = 'images/gem-blue.png';
 orangeGem.sprite = 'images/gem-orange.png';
 
