@@ -1,11 +1,31 @@
-# ninas-arcade-game
+# Ninas Arcade Game
 
 Udacity Front-End Web Development Nanodegree Project 4 - Arcade Game
 
-# Website
+## Website
 
 [https://ninakwelch.github.io/ninas-arcade-game/](https://ninakwelch.github.io/ninas-arcade-game/)
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Screenshots
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+![](http://res.cloudinary.com/ninaw/image/upload/c_scale,w_420/v1535272989/arcade_game_20_b69dqm.png)
+![](http://res.cloudinary.com/ninaw/image/upload/c_scale,w_420/v1535272989/arcade_game_21_ml8yhg.png)
+![](http://res.cloudinary.com/ninaw/image/upload/c_scale,w_420/v1535272989/arcade_game_22_syqcal.png)
+![](http://res.cloudinary.com/ninaw/image/upload/c_scale,w_420/v1535272989/arcade_game_23_hb2kkr.png)
+
+## Set Up
+
+1. Clone or download the depository
+2. Open `index.html` on your browser, for example:  
+* Apple desktop: right click on the file with your mouse and select **Open With**. Alternatively use your code editor 
+* Sublime text: right click on the file and select **Open in Browser**
+
+Alternatively, you can play the game [here](https://ninakwelch.github.io/ninas-arcade-game/)
+
+## How to Play
+
+The goal of the game is to reach the water without colliding with the bugs.
+
+The player has 5 lives and each time player collides with a bug, they loose one life and are returned to the starting point.
+
+The player can get points by collecting gems. Points are shown in the score.
