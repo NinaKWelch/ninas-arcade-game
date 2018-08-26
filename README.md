@@ -15,9 +15,9 @@ Udacity Front-End Web Development Nanodegree Project 4 - Arcade Game
 
 ## Set Up
 
-1. Clone or download the depository
+1. Clone or download the repository
 2. Open `index.html` on your browser, for example:  
-* Apple desktop: right click on the file with your mouse and select **Open With**. Alternatively use your code editor 
+* Apple desktop: right click on the file with your mouse and select **Open With** 
 * Sublime text: right click on the file and select **Open in Browser**
 
 Alternatively, you can play the game [here](https://ninakwelch.github.io/ninas-arcade-game/)
