@@ -146,18 +146,24 @@ var Engine = (function(global) {
      * on your enemy and player entities within app.js
      */
     function renderEntities() {
-        /* Loop through all of the objects within the allEnemies array and call
-         * the render function you have defined.
-         */
+
+        /* show the score and lives on screen */
+        renderScore();
+        renderLives();
+
+        /* Loop through all of the objects within the allGems array
+         and render them on canvas */
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
+
+        /* Loop through all of the objects within the allEnemies array
+         and render them on canvas */
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
 
         player.render();
-
-        allGems.forEach(function(gem) {
-            gem.render();
-        });
     }
 
     /* This function does nothing but it could have been a good place to

@@ -1,3 +1,41 @@
 body {
+	width: 505px;
+	margin: 0 auto;
+    margin-top: 25px;
     text-align: center;
+	font-family: Verdana, sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+
+.popup {
+	position: absolute;
+	margin: 118px 70px;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	width: 365px;
+	border: 1px solid green;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #999;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.popup-top {
+	margin: -15px 70px;
+	padding: 0 10px;
+}
+
+.popup h3 {
+	color: green;
+}
+
+.controls {
+	border: 1px solid green;
+	border-radius: 5px;
+	padding: 0 3px;
+}
+
+#gameEndPopup,
+#gameWinPopup {
+	display: none;
 }
