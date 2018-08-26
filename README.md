@@ -31,3 +31,8 @@ The goal of the game is to reach the water **without** colliding with the bugs.
 The player has **5 lives** and each time player collides with a bug, they loose one life and are returned to the starting point.
 
 The player can get points by collecting gems and the points are added to the **score**.
+
+## Resources
+
+![MDN Game development](https://developer.mozilla.org/en-US/docs/Games)
+![MDN Working with objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
