@@ -17,15 +17,15 @@ Udacity Front-End Web Development Nanodegree Project 4 - Arcade Game
 
 1. Clone or download the repository
 2. Open `index.html` on your browser, for example:  
-* Apple desktop: right click on the file with your mouse and select **Open With** 
-* Sublime text: right click on the file and select **Open in Browser**
+* on Mac,right click on the file with your mouse and select **Open With** 
+* on Sublime text, right click on the file and select **Open in Browser**
 
 Alternatively, you can play the game [here](https://ninakwelch.github.io/ninas-arcade-game/)
 
 ## How to Play
 
-The goal of the game is to reach the water without colliding with the bugs.
+The goal of the game is to reach the water **without** colliding with the bugs.
 
-The player has 5 lives and each time player collides with a bug, they loose one life and are returned to the starting point.
+The player has **5 lives** and each time player collides with a bug, they loose one life and are returned to the starting point.
 
-The player can get points by collecting gems. Points are shown in the score.
+The player can get points by collecting gems and the points are added to the **score**.
