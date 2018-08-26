@@ -34,5 +34,5 @@ The player can get points by collecting gems and the points are added to the **s
 
 ## Resources
 
-[MDN Game development](https://developer.mozilla.org/en-US/docs/Games)
-[MDN Working with objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
+* [MDN Game development](https://developer.mozilla.org/en-US/docs/Games)
+* [MDN Working with objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
