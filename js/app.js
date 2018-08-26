@@ -1,6 +1,9 @@
 // Variables
 var lives = 5;
 var score = 0;
+const startGamePopup = document.getElementById('gameStartPopup');
+const endGamePopup = document.getElementById('gameEndPopup');
+const winGamePopup = document.getElementById('gameWinPopup');
 
 // Enemy constructor function
 var Enemy = function(x, y) {
@@ -57,8 +60,8 @@ var Gem = function() {
     // Select a random column
     this.x = Math.floor((Math.random() * 5) + 0) * 101;
 
-    // Select a random row (minus 31 to position the gem sprite on the tile)
-    this.y = Math.floor((Math.random() * 6) + 0) * 83 - 31;
+    // Select a random row below the water blocks
+    this.y = Math.floor((Math.random() * 5) + 0) * 83 + 52;
 
     // Move gems to the left if it is randomly placed over the player's starting position
     if (this.x === 202 && this.y === 384) {
@@ -98,6 +101,7 @@ orangeGem.sprite = 'images/gem-orange.png';
 // Gems array
 var allGems = [greenGem, blueGem, orangeGem];
 
+
 // Check if the player and an enemy collide or if palyer has collected a gem
 function checkCollisions() {
     // Loop enemies array
@@ -111,8 +115,8 @@ function checkCollisions() {
             lives--;
 
             // end game if there are no more lives left
-            if (!lives) {
-                alert('Game over!');
+            if (lives === 0) {
+                endGame();
             } else {
                 // reset the game
                 startOver();
@@ -120,7 +124,8 @@ function checkCollisions() {
         } else if (player.y < 0) {
             // end game if the player reaches the top without colliding
             setTimeout(function() {
-                alert('You won!'); // sets a short delay so that player can reach the top tile
+                //alert('You won!'); // sets a short delay so that player can reach the top tile
+                winGame();
             }, 200);
         }
     }
@@ -155,6 +160,9 @@ function renderLives() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
         ctx.fillText("Lives: " + lives, 108, 20);
+        if (lives < 0) {
+            lives = 0
+        }
 }
 
 // reset the game board
@@ -173,7 +181,32 @@ function startOver() {
     enemy3.y = 226;
 }
 
+function startGame() {
+    setTimeout(function() {
+        startGamePopup.style.display = 'none';
+    }, 4000);
+}
 
+function endGame() {
+    stopGame();
+    // Show 'No lives' popup
+    endGamePopup.style.display = 'initial';
+}
+
+function winGame() {
+    stopGame();
+    // Show 'You won' popup
+    winGamePopup.style.display = 'initial';
+}
+
+function stopGame() {
+    // stop enemies from moving
+    enemy1.speed = null;
+    enemy2.speed = null;
+    enemy3.speed = null;
+    player.handleInput = function() {
+    }
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -186,4 +219,9 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+
+window.addEventListener("load", function(e) {
+    startGame();
 });

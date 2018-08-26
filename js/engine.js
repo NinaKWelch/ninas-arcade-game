@@ -146,6 +146,14 @@ var Engine = (function(global) {
      * on your enemy and player entities within app.js
      */
     function renderEntities() {
+
+        renderScore();
+        renderLives();
+
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
+
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
@@ -154,13 +162,6 @@ var Engine = (function(global) {
         });
 
         player.render();
-
-        allGems.forEach(function(gem) {
-            gem.render();
-        });
-
-        renderScore();
-        renderLives();
     }
 
     /* This function does nothing but it could have been a good place to
