@@ -56,14 +56,14 @@ var Player = function(x, y) {
     // move the player with arrow keys
     // but only within the canvas
     this.handleInput = function(keyCode) {
-        if (keyCode === 'left' && player.x > 100) {
-            player.x -= 101;
-        } else if (keyCode === 'up' && player.y > 0) {
-            player.y -= 83;
-        } else if (keyCode === 'right' && player.x < 404) {
-            player.x += 101;
-        } else if (keyCode === 'down' && player.y < 392) {
-            player.y += 83;
+        if (keyCode === 'left' && this.x > 100) {
+            this.x -= 101;
+        } else if (keyCode === 'up' && this.y > 0) {
+            this.y -= 83;
+        } else if (keyCode === 'right' && this.x < 404) {
+            this.x += 101;
+        } else if (keyCode === 'down' && this.y < 392) {
+            this.y += 83;
         }
     }
 };
